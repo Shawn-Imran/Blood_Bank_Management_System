@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+    <VBox alignment="CENTER" spacing="20.0"  style="-fx-padding: 5 0 0 0;"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.blood_bank_management_system.DashboardView"
+          prefHeight="400.0" prefWidth="600.0"
+    >
+        <HBox spacing="10.0" alignment="CENTER">
+            <Button text="Blood Storage" onAction="#onBloodStorageClick"/>
+            <Button text="Users" onAction="#onUsersClick"/>
+            <Button text="Donors" onAction="#onDonorsClick"/>
+            <Button text="Receivers" onAction="#onReceiversClick"/>
+        </HBox>
+        <StackPane VBox.vgrow="ALWAYS" prefWidth="600.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <TableView fx:id="bloodDetailsTable" prefWidth="600.0">
+                <columns>
+                    <TableColumn text="Blood Group" fx:id="bloodGroupColumn" prefWidth="300.0"/>
+                    <TableColumn text="Quantity" fx:id="quantityColumn" prefWidth="300.0"/>
+                </columns>
+            </TableView>
+            <TableView fx:id="usersTable" prefWidth="600.0" visible="false">
+                <columns>
+                    <TableColumn text="Username" fx:id="usernameColumn" prefWidth="150.0"/>
+                    <TableColumn text="Email" fx:id="emailColumn" prefWidth="190.0"/>
+                    <TableColumn text="Phone" fx:id="phoneColumn" prefWidth="160.0"/>
+                    <TableColumn text="Blood Group" fx:id="userBloodGroupColumn" prefWidth="100.0"/>
+                </columns>
+            </TableView>
+        </StackPane>
+    </VBox>
+
