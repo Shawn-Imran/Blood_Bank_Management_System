@@ -51,28 +51,13 @@ public class HelloController {
 
     @FXML
     protected void onRegisterButtonClick() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-
-        if (username.isEmpty() || password.isEmpty()) {
-            System.out.println("Username or Password cannot be empty");
-            return;
-        }
-
-        try (Connection connection = DatabaseConnection.getConnection()) {
-            String query = "INSERT INTO users (username, password) VALUES (?, ?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-            int rowsAffected = preparedStatement.executeUpdate();
-
-            if (rowsAffected > 0) {
-                System.out.println("Registration successful for user: " + username);
-                loadDashboard();
-            } else {
-                System.out.println("Registration failed");
-            }
-        } catch (SQLException | IOException e) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("registration-view.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
